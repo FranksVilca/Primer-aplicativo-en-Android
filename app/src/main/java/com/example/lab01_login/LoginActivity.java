@@ -1,5 +1,6 @@
 package com.example.lab01_login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -7,15 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lab01_login.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private ActivityMainBinding binding;
     @Override
@@ -36,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         EditText edtUsername = binding.edtUsername;
         EditText edtPassword = binding.edtPassword;
         Button btnLogin = binding.btnLogin;
+        Button btnAddAccount = binding.btnAddAccount;
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG,"Error en la autenticacion");
                 }
             }
+        });
+
+        btnAddAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+            startActivity(intent);
         });
 
     }
